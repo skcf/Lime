@@ -1,4 +1,6 @@
-# lime
+# Lime
+
+A command line tool for generating custom templates, running routine commands at once.
 
 ## Description
 
@@ -9,12 +11,12 @@
 To install, use `go get`:
 
 ```bash
-$ go get -d github.com/skcf/lime
+$ go get -d github.com/skcf/Lime
 ```
 
 ## Contribution
 
-1. Fork ([https://github.com/Souichi/lime/fork](https://github.com/skcf/lime/fork))
+1. Fork ([https://github.com/skcf/Lime/fork](https://github.com/skcf/Lime/fork))
 1. Create a feature branch
 1. Commit your changes
 1. Rebase your local changes against the master branch
