@@ -11,7 +11,7 @@ A command line tool for generating custom templates, running routine commands at
 To install, use `go get`:
 
 ```bash
-$ go get -d github.com/skcf/Lime
+$ go get github.com/skcf/Lime
 ```
 
 ## Contribution
