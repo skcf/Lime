@@ -14,6 +14,7 @@ func main() {
 	app.Author = "Souichi"
 	app.Email = "sk.cf.msc@gmail.com"
 	app.Action = doMain
+	app.Commands = Commands
 	app.Run(os.Args)
 }
 
