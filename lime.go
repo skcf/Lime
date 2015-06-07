@@ -6,6 +6,27 @@ import (
 	"github.com/codegangsta/cli"
 )
 
+var limeHelpTemplate = `
+Lime is a tool for generating template files and building environment.
+
+USAGE:
+   {{.Name}} {{if .Flags}}[global options] {{end}}command{{if .Flags}} [command options]{{end}} [arguments...]
+
+VERSION:
+   {{.Version}}{{if len .Authors}}
+
+AUTHOR(S):
+   {{range .Authors}}{{ . }}{{end}}{{end}}
+
+COMMANDS:
+   {{range .Commands}}{{join .Names ", "}}{{ "\t" }}{{.Usage}}
+   {{end}}{{if .Flags}}
+
+GLOBAL OPTIONS:
+   {{range .Flags}}{{.}}
+   {{end}}{{end}}
+`
+
 func main() {
 	app := cli.NewApp()
 	app.Name = "Lime"
@@ -13,11 +34,12 @@ func main() {
 	app.Usage = ""
 	app.Author = "Souichi"
 	app.Email = "sk.cf.msc@gmail.com"
-	app.Action = doMain
+	app.Action = doHelp
 	app.Commands = Commands
 	app.Run(os.Args)
 }
 
-func doMain(c *cli.Context) {
-	println ("hello world")
+func doHelp(c *cli.Context) {
+	cli.AppHelpTemplate = limeHelpTemplate
+	cli.ShowAppHelp(c)
 }

@@ -9,6 +9,7 @@ import (
 var Commands = []cli.Command{
     commandInit,
     commandList,
+    commandHelp,
 }
 
 var commandInit = cli.Command{
@@ -24,6 +25,14 @@ var commandList = cli.Command{
   Description: "",
   Action: doList,
 }
+
+var commandHelp = cli.Command{
+  Name: "help",
+  Usage: "",
+  Description: "",
+  Action: doHelp,
+}
+
 
 
 func doInit(c *cli.Context) {
