@@ -1,5 +1,7 @@
 # Lime
 
+[![Build Status](https://travis-ci.org/skcf/Lime.svg?branch=master)](https://travis-ci.org/skcf/Lime)
+
 A command line tool for generating custom templates, running routine commands at once.
 
 ## Description
