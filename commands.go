@@ -9,6 +9,7 @@ import (
 var Commands = []cli.Command{
     commandInit,
     commandList,
+    commandSetup,
     commandHelp,
 }
 
@@ -26,6 +27,13 @@ var commandList = cli.Command{
   Action: doList,
 }
 
+var commandSetup = cli.Command{
+  Name: "setup",
+  Usage: "",
+  Description: "",
+  Action: doSetup,
+}
+
 var commandHelp = cli.Command{
   Name: "help",
   Usage: "",
@@ -36,18 +44,16 @@ var commandHelp = cli.Command{
 
 
 func doInit(c *cli.Context) {
-  home := os.Getenv("HOME")
-  targetPath := home + "/.lime"
-
-  cmd := exec.Command("mkdir",targetPath)
-
-  stdout, err := cmd.Output()
-  if err != nil {
-    println(err.Error())
-    return
+  switch {
+    case len(c.Args()) == 1:
+      println("command ",c.Args()[0])
+    case len(c.Args()) > 1:
+      println("Error: Unknown command",c.Args()[0])
+    default:
+      doHelp(c)
   }
-  println(string(stdout))
 }
+
 
 func doList(c *cli.Context) {
   home := os.Getenv("HOME")
@@ -60,5 +66,20 @@ func doList(c *cli.Context) {
     println(err.Error())
     return
   }
+  println(string(stdout))
+}
+
+
+func doSetup(c *cli.Context) {
+  home := os.Getenv("HOME")
+  targetPath := home + "/.lime"
+
+  cmd := exec.Command("mkdir",targetPath)
+  stdout, err := cmd.Output()
+  if err != nil {
+    println(err.Error())
+    return
+  }
+
   println(string(stdout))
 }
