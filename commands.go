@@ -44,16 +44,23 @@ var commandHelp = cli.Command{
 
 
 func doInit(c *cli.Context) {
+  home := os.Getenv("HOME")
   switch {
     case len(c.Args()) == 1:
+      source := home + "/.lime/" + c.Args()[0]
       println("command ",c.Args()[0])
+      cmd := exec.Command("cp","-r",source,".")
+      _, err := cmd.Output()
+      if err != nil {
+        println(err.Error())
+        return
+      }
     case len(c.Args()) > 1:
       println("Error: Unknown command",c.Args()[0])
     default:
       doHelp(c)
   }
 }
-
 
 func doList(c *cli.Context) {
   home := os.Getenv("HOME")
@@ -68,7 +75,6 @@ func doList(c *cli.Context) {
   }
   println(string(stdout))
 }
-
 
 func doSetup(c *cli.Context) {
   home := os.Getenv("HOME")
