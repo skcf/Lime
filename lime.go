@@ -28,6 +28,7 @@ GLOBAL OPTIONS:
 `
 
 func main() {
+	initTemplate()
 	app := cli.NewApp()
 	app.Name = "Lime"
 	app.Version = Version
@@ -50,8 +51,12 @@ func doMain(c *cli.Context) {
 	}
 }
 
-
 func doHelp(c *cli.Context) {
 	cli.AppHelpTemplate = limeHelpTemplate
 	cli.ShowAppHelp(c)
+}
+
+
+func initTemplate() {
+	cli.AppHelpTemplate = limeHelpTemplate
 }
