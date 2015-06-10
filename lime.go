@@ -34,10 +34,22 @@ func main() {
 	app.Usage = ""
 	app.Author = "Souichi"
 	app.Email = "sk.cf.msc@gmail.com"
-	app.Action = doHelp
+	app.Action = doMain
 	app.Commands = Commands
 	app.Run(os.Args)
 }
+
+func doMain(c *cli.Context) {
+	switch {
+	case len(c.Args()) == 1:
+		println("command ",c.Args()[0])
+	case len(c.Args()) > 1:
+		println("Error: Unknown command",c.Args()[0])
+	default:
+		doHelp(c)
+	}
+}
+
 
 func doHelp(c *cli.Context) {
 	cli.AppHelpTemplate = limeHelpTemplate
