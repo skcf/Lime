@@ -2,7 +2,6 @@ package main
 
 import (
 	"os"
-
 	"github.com/codegangsta/cli"
 )
 
@@ -40,12 +39,10 @@ func main() {
 	app.Run(os.Args)
 }
 
-
 func doHelp(c *cli.Context) {
 	cli.AppHelpTemplate = limeHelpTemplate
 	cli.ShowAppHelp(c)
 }
-
 
 func initTemplate() {
 	cli.AppHelpTemplate = limeHelpTemplate
