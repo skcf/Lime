@@ -11,7 +11,7 @@ import (
 
 var Commands = []cli.Command{
     commandInit,
-    commandList,
+    commandLs,
     commandSetup,
     commandHelp,
 }
@@ -23,11 +23,11 @@ var commandInit = cli.Command{
     Action: doInit,
 }
 
-var commandList = cli.Command{
-    Name: "list",
+var commandLs = cli.Command{
+    Name: "ls",
     Usage: "",
     Description: "",
-    Action: doList,
+    Action: doLs,
 }
 
 var commandSetup = cli.Command{
@@ -108,16 +108,14 @@ func removeFile(file string) {
     }
 }
 
-func doList(c *cli.Context) {
+func doLs(c *cli.Context) {
     home := os.Getenv("HOME")
     targetPath := home + "/.lime"
-    cmd := exec.Command("ls",targetPath)
-    stdout, err := cmd.Output()
-    if err != nil {
-        println(err.Error())
-        return
+    println("\n*** Lime Templates ***\n")
+    files, _ := ioutil.ReadDir(targetPath)
+    for _, f := range files {
+         fmt.Println(f.Name())
     }
-    println(string(stdout))
 }
 
 func doSetup(c *cli.Context) {
