@@ -62,9 +62,9 @@ func doInit(c *cli.Context) {
                 files, _ := ioutil.ReadDir(source)
                 for _, f := range files {
                     if f.Name() == "lime.sh" {
-                    copy744(source + "/" + f.Name(),"./lime.sh")
+                        copy744(source + "/" + f.Name(),"./lime.sh")
                     } else {
-                    copyFile(source + "/"+ f.Name())
+                        copyFile(source + "/"+ f.Name())
                     }
                 }
                 if exist("lime.sh") == true {
@@ -132,7 +132,7 @@ func doLs(c *cli.Context) {
     println("\n*** Lime Templates ***\n")
     files, _ := ioutil.ReadDir(targetPath)
     for _, f := range files {
-         fmt.Println(f.Name())
+        fmt.Println(f.Name())
     }
 }
 
