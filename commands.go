@@ -6,6 +6,7 @@ import (
     "fmt"
     "log"
     "io/ioutil"
+    "regexp"
     "github.com/codegangsta/cli"
 )
 
@@ -49,27 +50,44 @@ func doInit(c *cli.Context) {
     switch {
         case len(c.Args()) == 1:
             source := home + "/.lime/" + c.Args()[0]
-            files, _ := ioutil.ReadDir(source)
-            for _, f := range files {
-                if f.Name() == "lime.sh" {
-                copy744(source + "/" + f.Name(),"./lime.sh")
-                } else {
-                copyFile(source + "/"+ f.Name())
-                }
-            }
-            if exist("lime.sh") == true {
-                out, err := exec.Command("./lime.sh").Output()
+            if shell(c.Args()[0]) == true {
+                copy744(source,"./" + c.Args()[0])
+                out, err := exec.Command("./" + c.Args()[0]).Output()
                 if err != nil {
                     log.Fatal(err)
                 }
                 fmt.Printf("%s",out)
-                removeFile("lime.sh")
+                removeFile(c.Args()[0])
+            } else {
+                files, _ := ioutil.ReadDir(source)
+                for _, f := range files {
+                    if f.Name() == "lime.sh" {
+                    copy744(source + "/" + f.Name(),"./lime.sh")
+                    } else {
+                    copyFile(source + "/"+ f.Name())
+                    }
+                }
+                if exist("lime.sh") == true {
+                    out, err := exec.Command("./lime.sh").Output()
+                    if err != nil {
+                        log.Fatal(err)
+                    }
+                    fmt.Printf("%s",out)
+                    removeFile("lime.sh")
+                }
             }
         case len(c.Args()) > 1:
             println("Error: Unknown command",c.Args()[0])
         default:
             doHelp(c)
     }
+}
+
+func shell(name string) bool {
+    if m, _ := regexp.MatchString(".sh$", name); !m {
+        return false
+    }
+    return true
 }
 
 func copyFile(src string){
