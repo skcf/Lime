@@ -152,7 +152,6 @@ func doLs(c *cli.Context) {
         fmt.Println(i)
     }
     fmt.Println("")
-
 }
 
 func doSetup(c *cli.Context) {
