@@ -19,14 +19,14 @@ var Commands = []cli.Command{
 
 var commandInit = cli.Command{
     Name: "init",
-    Usage: "",
+    Usage: "copy template directory and run \"lime.sh\" in template directory",
     Description: "",
     Action: doInit,
 }
 
 var commandLs = cli.Command{
     Name: "ls",
-    Usage: "",
+    Usage: "list lime templates",
     Description: "",
     Action: doLs,
 }
