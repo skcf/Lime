@@ -8,6 +8,27 @@ A command line tool for generating custom templates, running routine commands at
 
 ## Usage
 
+### Copy Template Files and Run "lime.sh"
+```
+lime init <TEMPLATE DIRECTORY>
+```
+
+### Run Template ShellScript
+```
+lime init <SHELLSCRIPT NAME>
+```
+
+### List templates
+```
+lime ls
+```
+
+### List templates files
+```
+lime ls <TEMPLATE DIRECTORY>
+```
+
+
 ## Install
 
 To install, use `go get`:
