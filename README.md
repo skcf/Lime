@@ -23,7 +23,7 @@ lime init <SHELLSCRIPT NAME>
 lime ls
 ```
 
-### List templates files
+### List template files
 ```
 lime ls <TEMPLATE DIRECTORY>
 ```
