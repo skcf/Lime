@@ -12,6 +12,7 @@ import (
 
 var Commands = []cli.Command{
     commandInit,
+    commandG,
     commandLs,
     commandSetup,
     commandHelp,
@@ -23,6 +24,15 @@ var commandInit = cli.Command{
     Description: "",
     Action: doInit,
 }
+
+var commandG = cli.Command{
+    Name: "g",
+    Usage: "Generate a template file",
+    Description: "",
+    Action: doG,
+}
+
+
 
 var commandLs = cli.Command{
     Name: "ls",
@@ -125,6 +135,13 @@ func removeFile(file string) {
         return
     }
 }
+
+func doG(c *cli.Context) {
+    home := os.Getenv("HOME")
+    fmt.Printf(home)
+}
+
+
 
 func doLs(c *cli.Context) {
     switch {
