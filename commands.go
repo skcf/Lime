@@ -7,6 +7,7 @@ import (
     "log"
     "io/ioutil"
     "regexp"
+    "strings"
     "github.com/codegangsta/cli"
 )
 
@@ -138,7 +139,18 @@ func removeFile(file string) {
 
 func doG(c *cli.Context) {
     home := os.Getenv("HOME")
-    fmt.Printf(home)
+    templatePath := os.Getenv("GOPATH") + "/src/github.com/skcf/Lime/Templates/"
+
+    if strings.Contains(c.Args()[0],".go") == true {
+        fmt.Println("Return go template")
+    }
+
+    if strings.Contains(c.Args()[0],".py") == true {
+        fmt.Println("Return python template")
+    }
+    
+    fmt.Println(home)
+    fmt.Println(templatePath)
 }
 
 
