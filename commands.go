@@ -33,8 +33,6 @@ var commandG = cli.Command{
     Action: doG,
 }
 
-
-
 var commandLs = cli.Command{
     Name: "ls",
     Usage: "list lime templates",
@@ -138,21 +136,21 @@ func removeFile(file string) {
 }
 
 func doG(c *cli.Context) {
-    home := os.Getenv("HOME")
     templatePath := os.Getenv("GOPATH") + "/src/github.com/skcf/Lime/Templates/"
 
     if strings.Contains(c.Args()[0],".go") == true {
-        fmt.Println("Return go template")
+        src, err:= ioutil.ReadFile( templatePath + "Go/template.go" )
+        checkErr(err)
+        err = ioutil.WriteFile("./" + c.Args()[0],src,0644)
     }
 
     if strings.Contains(c.Args()[0],".py") == true {
-        fmt.Println("Return python template")
+        src, err:= ioutil.ReadFile( templatePath + "Python/template.py" )
+        checkErr(err)
+        err = ioutil.WriteFile("./" + c.Args()[0],src,0644)
     }
-    
-    fmt.Println(home)
-    fmt.Println(templatePath)
-}
 
+}
 
 
 func doLs(c *cli.Context) {
