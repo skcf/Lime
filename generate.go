@@ -6,6 +6,7 @@ import (
     "strings"
     "github.com/codegangsta/cli"
 )
+
 var commandG = cli.Command{
     Name: "g",
     Usage: "Generate a template file",
