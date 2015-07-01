@@ -136,20 +136,17 @@ func removeFile(file string) {
 }
 
 func doG(c *cli.Context) {
-    templatePath := os.Getenv("GOPATH") + "/src/github.com/skcf/Lime/Templates/"
+    generateTemplate(c,".go","Go/template.go")
+    generateTemplate(c,".py","Python/template.py")
+}
 
-    if strings.Contains(c.Args()[0],".go") == true {
-        src, err:= ioutil.ReadFile( templatePath + "Go/template.go" )
-        checkErr(err)
-        err = ioutil.WriteFile("./" + c.Args()[0],src,0644)
-    }
-
-    if strings.Contains(c.Args()[0],".py") == true {
-        src, err:= ioutil.ReadFile( templatePath + "Python/template.py" )
-        checkErr(err)
-        err = ioutil.WriteFile("./" + c.Args()[0],src,0644)
-    }
-
+func generateTemplate(c *cli.Context,extension string, srcPath string) {
+  templatePath := os.Getenv("GOPATH") + "/src/github.com/skcf/Lime/Templates/"
+  if strings.Contains(c.Args()[0], extension) == true {
+      src, err:= ioutil.ReadFile( templatePath + srcPath )
+      checkErr(err)
+      err = ioutil.WriteFile("./" + c.Args()[0],src,0644)
+  }
 }
 
 
