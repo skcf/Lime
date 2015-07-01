@@ -2,7 +2,6 @@ package main
 
 import (
     "os"
-    "os/exec"
     "fmt"
     "io/ioutil"
     "github.com/codegangsta/cli"
@@ -23,12 +22,6 @@ var commandLs = cli.Command{
     Action: doLs,
 }
 
-var commandSetup = cli.Command{
-    Name: "setup",
-    Usage: "",
-    Description: "",
-    Action: doSetup,
-}
 
 var commandHelp = cli.Command{
     Name: "help",
@@ -77,16 +70,4 @@ func doLs(c *cli.Context) {
                 fmt.Println(f.Name())
             }
     }
-}
-
-func doSetup(c *cli.Context) {
-    home := os.Getenv("HOME")
-    targetPath := home + "/.lime"
-    cmd := exec.Command("mkdir",targetPath)
-    stdout, err := cmd.Output()
-    if err != nil {
-        println(err.Error())
-        return
-    }
-    println(string(stdout))
 }
