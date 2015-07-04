@@ -15,8 +15,15 @@ var commandG = cli.Command{
 }
 
 func doG(c *cli.Context) {
-    generateTemplate(c,".go","Go/template.go")
-    generateTemplate(c,".py","Python/template.py")
+    switch {
+    case len(c.Args()) == 1:
+        generateTemplate(c,".go","Go/template.go")
+        generateTemplate(c,".py","Python/template.py")
+    case len(c.Args()) > 1:
+        doHelp(c)
+    default:
+        doHelp(c)
+    }
 }
 
 func generateTemplate(c *cli.Context,extension string, srcPath string) {
