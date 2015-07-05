@@ -19,6 +19,7 @@ func doG(c *cli.Context) {
     case len(c.Args()) == 1:
         generateTemplate(c,".go","Go/template.go")
         generateTemplate(c,".py","Python/template.py")
+        generateTemplate(c,".sh","ShellScript/template.sh")
     case len(c.Args()) > 1:
         doHelp(c)
     default:
