@@ -8,6 +8,11 @@ A command line tool for generating custom templates, running routine commands at
 
 ## Usage
 
+### Generate New File from Template
+```
+lime g <FILE NAME>
+```
+
 ### Copy Template Files and Run "lime.sh"
 ```
 lime init <TEMPLATE DIRECTORY>
