@@ -8,7 +8,7 @@ import (
 
 var commandSetup = cli.Command{
 	Name:        "setup",
-	Usage:       "",
+	Usage:       "setup template directory",
 	Description: "",
 	Action:      doSetup,
 }

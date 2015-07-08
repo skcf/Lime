@@ -9,7 +9,7 @@ import (
 
 var commandG = cli.Command{
 	Name:        "g",
-	Usage:       "Generate a template file",
+	Usage:       "generate a template file",
 	Description: "",
 	Action:      doG,
 }

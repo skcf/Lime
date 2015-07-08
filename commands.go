@@ -24,7 +24,7 @@ var commandLs = cli.Command{
 
 var commandHelp = cli.Command{
 	Name:        "help",
-	Usage:       "",
+	Usage:       "show help",
 	Description: "",
 	Action:      doHelp,
 }
