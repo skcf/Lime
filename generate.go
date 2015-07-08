@@ -29,7 +29,7 @@ func doG(c *cli.Context) {
 
 func generateTemplate(c *cli.Context, extension string, srcPath string) {
 	home := os.Getenv("HOME") + "/.lime/Templates/"
-	if strings.Contains(c.Args()[0], extension) == true {
+	if strings.Contains(c.Args()[0], extension) {
 		src, err := ioutil.ReadFile(home + srcPath)
 		checkErr(err)
 		err = ioutil.WriteFile("./"+c.Args()[0], src, 0644)
