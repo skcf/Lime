@@ -1,7 +1,7 @@
 package main
 
 import (
-    "os"
+		"os"
     "io/ioutil"
     "strings"
     "github.com/codegangsta/cli"
@@ -28,10 +28,10 @@ func doG(c *cli.Context) {
 }
 
 func generateTemplate(c *cli.Context,extension string, srcPath string) {
-  templatePath := os.Getenv("GOPATH") + "/src/github.com/skcf/Lime/Templates/"
-  if strings.Contains(c.Args()[0], extension) == true {
-      src, err:= ioutil.ReadFile( templatePath + srcPath )
-      checkErr(err)
-      err = ioutil.WriteFile("./" + c.Args()[0],src,0644)
-  }
+    home := os.Getenv("HOME") + "/.lime/Templates/"
+    if strings.Contains(c.Args()[0], extension) == true {
+        src, err:= ioutil.ReadFile( home + srcPath )
+        checkErr(err)
+        err = ioutil.WriteFile("./" + c.Args()[0],src,0644)
+    }
 }
