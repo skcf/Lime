@@ -22,7 +22,7 @@ func doInit(c *cli.Context) {
 	switch {
 	case len(c.Args()) == 1:
 		source := home + "/.lime/" + c.Args()[0]
-		if existLimeScript(c.Args()[0]) {
+		if shell(c.Args()[0]) {
 			copy744(source, "./"+c.Args()[0])
 			out, err := exec.Command("./" + c.Args()[0]).Output()
 			if err != nil {
@@ -55,7 +55,7 @@ func doInit(c *cli.Context) {
 	}
 }
 
-func existLimeScript(name string) bool {
+func shell(name string) bool {
 	if m, _ := regexp.MatchString(".sh$", name); !m {
 		return false
 	}
