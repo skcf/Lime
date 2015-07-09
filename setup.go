@@ -33,7 +33,7 @@ func doSetup(c *cli.Context) {
 func copyTemplates() {
 	home := os.Getenv("HOME")
 	limePath := home + "/.lime/"
-	templatePath := os.Getenv("GOPATH") + "/src/github.com/skcf/Lime/Templates"
+	templatePath := os.Getenv("GOPATH") + "/src/github.com/skcf/Lime/templates"
 	cmd := exec.Command("cp", "-r", templatePath, limePath)
 	_, err := cmd.Output()
 	if err != nil {
