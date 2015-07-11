@@ -28,7 +28,7 @@ func doG(c *cli.Context) {
 }
 
 func generateTemplate(c *cli.Context, extension string, srcPath string) {
-	home := os.Getenv("HOME") + "/.lime/Templates/"
+	home := os.Getenv("HOME") + "/.lime/templates/generator-templates/"
 	if checkExtension(c.Args()[0], extension) {
 		src, err := ioutil.ReadFile(home + srcPath)
 		checkErr(err)
