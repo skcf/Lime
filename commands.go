@@ -33,7 +33,7 @@ func doLs(c *cli.Context) {
 	switch {
 	case len(c.Args()) == 0:
 		home := os.Getenv("HOME")
-		targetPath := home + "/.lime"
+		targetPath := home + "/.lime/init-templates"
 
 		var templates []string
 		var scripts []string
