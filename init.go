@@ -21,7 +21,7 @@ func doInit(c *cli.Context) {
 	home := os.Getenv("HOME")
 	switch {
 	case len(c.Args()) == 1:
-		source := home + "/.lime/" + c.Args()[0]
+		source := home + "/.lime/init-templates/" + c.Args()[0]
 		if shell(c.Args()[0]) {
 			copy744(source, "./"+c.Args()[0])
 			out, err := exec.Command("./" + c.Args()[0]).Output()
