@@ -33,27 +33,39 @@ func doLs(c *cli.Context) {
 	switch {
 	case len(c.Args()) == 0:
 		home := os.Getenv("HOME")
-		targetPath := home + "/.lime/init-templates"
+		generatorTemplatesPath := home + "/.lime/generator-templates"
+		initTemplatesPath := home + "/.lime/init-templates"
 
-		var templates []string
-		var scripts []string
+		var generatorTemplateList []string
+		var initTemplateList []string
+		var scriptList []string
 
-		files, _ := ioutil.ReadDir(targetPath)
-		for _, f := range files {
+		generatorTemplates, _ := ioutil.ReadDir(generatorTemplatesPath)
+		for _, f := range generatorTemplates {
 			if f.IsDir() == true {
-				templates = append(templates, f.Name())
-			} else {
-				scripts = append(scripts, f.Name())
+				generatorTemplateList = append(generatorTemplateList, f.Name())
 			}
 		}
 
-		fmt.Println("\n*** Lime Template Directories ***")
-		for _, i := range templates {
+		initTemplates, _ := ioutil.ReadDir(initTemplatesPath)
+		for _, f := range initTemplates {
+			if f.IsDir() == true {
+				initTemplateList = append(initTemplateList, f.Name())
+			}
+		}
+
+		fmt.Println("\n*** Generator Templates ***")
+		for _, i := range generatorTemplateList {
 			fmt.Println(i)
 		}
 
-		fmt.Println("\n*** Lime Template Scripts ***")
-		for _, i := range scripts {
+		fmt.Println("\n*** Init Templates ***")
+		for _, i := range initTemplateList {
+			fmt.Println(i)
+		}
+
+		fmt.Println("\n*** Init Scripts ***")
+		for _, i := range scriptList {
 			fmt.Println(i)
 		}
 		fmt.Println("")
