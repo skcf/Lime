@@ -35,6 +35,7 @@ func doLs(c *cli.Context) {
 		home := os.Getenv("HOME")
 		generatorTemplatesPath := home + "/.lime/generator-templates"
 		initTemplatesPath := home + "/.lime/init-templates"
+		initScriptsPath := home + "/.lime/init-scripts"
 
 		var generatorTemplateList []string
 		var initTemplateList []string
@@ -52,6 +53,11 @@ func doLs(c *cli.Context) {
 			if f.IsDir() == true {
 				initTemplateList = append(initTemplateList, f.Name())
 			}
+		}
+
+		initScripts, _ := ioutil.ReadDir(initScriptsPath)
+		for _, f := range initScripts {
+			scriptList = append(scriptList, f.Name())
 		}
 
 		fmt.Println("\n*** Generator Templates ***")
